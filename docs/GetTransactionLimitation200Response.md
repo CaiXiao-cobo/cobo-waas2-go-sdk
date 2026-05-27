@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VaspList** | Pointer to [**[]Vasp**](Vasp.md) | A list of virtual asset service providers (VASP) you can select as the transaction source or destination. | [optional] 
 **IsThresholdReached** | Pointer to **bool** | Indicates whether the transaction amount exceeds a predefined threshold. If exceeded, additional information is required when filling Travel Rule details. - &#x60;true&#x60;: Threshold exceeded. - &#x60;false&#x60;: Threshold not exceeded.  | [optional] 
-**SelfCustodyWalletChallenge** | Pointer to **string** | A human-readable, time-sensitive message to be signed by the wallet owner. The message contains key information including the wallet address, a unique nonce, and a timestamp. Signing this message confirms ownership of the wallet and allows the operation to proceed.  | [optional] 
+**SelfCustodyWalletChallenge** | Pointer to **string** | **Deprecated.** Use [Get self-custody signature challenge](#operation/get_signature_challenge) instead. This field will be removed in a future release.  A human-readable, time-sensitive message to be signed by the wallet owner. The message contains key information including the wallet address, a unique nonce, and a timestamp. Signing this message confirms ownership of the wallet and allows the operation to proceed.  | [optional] 
 **ConnectWalletList** | Pointer to **[]string** | A list of self-custody wallet providers you can select as the transaction source or destination. | [optional] 
+**SatoshiTestSupported** | Pointer to **bool** | Indicates whether Satoshi Test (on-chain micro-deposit verification) is supported for the transaction&#39;s chain. - &#x60;true&#x60;: You can initiate a Satoshi Test challenge to verify the counterparty address. - &#x60;false&#x60;: The chain does not support Satoshi Test; use signature verification instead.  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetConnectWalletList sets ConnectWalletList field to given value.
 `func (o *GetTransactionLimitation200Response) HasConnectWalletList() bool`
 
 HasConnectWalletList returns a boolean if a field has been set.
+
+### GetSatoshiTestSupported
+
+`func (o *GetTransactionLimitation200Response) GetSatoshiTestSupported() bool`
+
+GetSatoshiTestSupported returns the SatoshiTestSupported field if non-nil, zero value otherwise.
+
+### GetSatoshiTestSupportedOk
+
+`func (o *GetTransactionLimitation200Response) GetSatoshiTestSupportedOk() (*bool, bool)`
+
+GetSatoshiTestSupportedOk returns a tuple with the SatoshiTestSupported field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSatoshiTestSupported
+
+`func (o *GetTransactionLimitation200Response) SetSatoshiTestSupported(v bool)`
+
+SetSatoshiTestSupported sets SatoshiTestSupported field to given value.
+
+### HasSatoshiTestSupported
+
+`func (o *GetTransactionLimitation200Response) HasSatoshiTestSupported() bool`
+
+HasSatoshiTestSupported returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

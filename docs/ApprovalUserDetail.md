@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Result** | Pointer to [**ApprovalResult**](ApprovalResult.md) |  | [optional] 
 **ApprovalResultCode** | Pointer to **int32** | Integer value representing the result of the approval. | [optional] 
 **CreatedTime** | Pointer to **int32** | Timestamp when the approval was created. | [optional] 
+**ExpiredTime** | Pointer to **int32** | The timestamp when the approval was expired. | [optional] 
 **TemplateVersion** | Pointer to **string** | Version of the template used for the transaction approval. | [optional] 
 **HeaderTitle** | Pointer to **string** | Display title used in the transaction approval. | [optional] 
 **IsForSign** | Pointer to **bool** | Indicates whether this approval requires signing: - &#x60;true&#x60;: The user must sign the transaction. - &#x60;false&#x60;: The user only needs to approve or reject without signing.  | [optional] 
@@ -239,6 +240,31 @@ SetCreatedTime sets CreatedTime field to given value.
 `func (o *ApprovalUserDetail) HasCreatedTime() bool`
 
 HasCreatedTime returns a boolean if a field has been set.
+
+### GetExpiredTime
+
+`func (o *ApprovalUserDetail) GetExpiredTime() int32`
+
+GetExpiredTime returns the ExpiredTime field if non-nil, zero value otherwise.
+
+### GetExpiredTimeOk
+
+`func (o *ApprovalUserDetail) GetExpiredTimeOk() (*int32, bool)`
+
+GetExpiredTimeOk returns a tuple with the ExpiredTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiredTime
+
+`func (o *ApprovalUserDetail) SetExpiredTime(v int32)`
+
+SetExpiredTime sets ExpiredTime field to given value.
+
+### HasExpiredTime
+
+`func (o *ApprovalUserDetail) HasExpiredTime() bool`
+
+HasExpiredTime returns a boolean if a field has been set.
 
 ### GetTemplateVersion
 

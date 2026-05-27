@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BulkSendId** | **string** | The bulk send ID. | 
+**RequestId** | Pointer to **string** | The request ID. | [optional] 
 **SourceAccount** | **string** | The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the source account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;.  | 
 **Description** | Pointer to **string** | The description for the entire bulk send batch. | [optional] 
 **ExecutionMode** | [**PaymentBulkSendExecutionMode**](PaymentBulkSendExecutionMode.md) |  | 
@@ -50,6 +51,31 @@ and a boolean to check if the value has been set.
 
 SetBulkSendId sets BulkSendId field to given value.
 
+
+### GetRequestId
+
+`func (o *PaymentBulkSend) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *PaymentBulkSend) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *PaymentBulkSend) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+### HasRequestId
+
+`func (o *PaymentBulkSend) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
 
 ### GetSourceAccount
 
