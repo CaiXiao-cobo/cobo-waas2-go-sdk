@@ -21,10 +21,13 @@ type GetTransactionLimitation200Response struct {
 	VaspList []Vasp `json:"vasp_list,omitempty"`
 	// Indicates whether the transaction amount exceeds a predefined threshold. If exceeded, additional information is required when filling Travel Rule details. - `true`: Threshold exceeded. - `false`: Threshold not exceeded. 
 	IsThresholdReached *bool `json:"is_threshold_reached,omitempty"`
-	// A human-readable, time-sensitive message to be signed by the wallet owner. The message contains key information including the wallet address, a unique nonce, and a timestamp. Signing this message confirms ownership of the wallet and allows the operation to proceed. 
+	// **Deprecated.** Use [Get self-custody signature challenge](#operation/get_signature_challenge) instead. This field will be removed in a future release.  A human-readable, time-sensitive message to be signed by the wallet owner. The message contains key information including the wallet address, a unique nonce, and a timestamp. Signing this message confirms ownership of the wallet and allows the operation to proceed. 
+	// Deprecated
 	SelfCustodyWalletChallenge *string `json:"self_custody_wallet_challenge,omitempty"`
 	// A list of self-custody wallet providers you can select as the transaction source or destination.
 	ConnectWalletList []string `json:"connect_wallet_list,omitempty"`
+	// Indicates whether Satoshi Test (on-chain micro-deposit verification) is supported for the transaction's chain. - `true`: You can initiate a Satoshi Test challenge to verify the counterparty address. - `false`: The chain does not support Satoshi Test; use signature verification instead. 
+	SatoshiTestSupported *bool `json:"satoshi_test_supported,omitempty"`
 }
 
 // NewGetTransactionLimitation200Response instantiates a new GetTransactionLimitation200Response object
@@ -109,6 +112,7 @@ func (o *GetTransactionLimitation200Response) SetIsThresholdReached(v bool) {
 }
 
 // GetSelfCustodyWalletChallenge returns the SelfCustodyWalletChallenge field value if set, zero value otherwise.
+// Deprecated
 func (o *GetTransactionLimitation200Response) GetSelfCustodyWalletChallenge() string {
 	if o == nil || IsNil(o.SelfCustodyWalletChallenge) {
 		var ret string
@@ -119,6 +123,7 @@ func (o *GetTransactionLimitation200Response) GetSelfCustodyWalletChallenge() st
 
 // GetSelfCustodyWalletChallengeOk returns a tuple with the SelfCustodyWalletChallenge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *GetTransactionLimitation200Response) GetSelfCustodyWalletChallengeOk() (*string, bool) {
 	if o == nil || IsNil(o.SelfCustodyWalletChallenge) {
 		return nil, false
@@ -136,6 +141,7 @@ func (o *GetTransactionLimitation200Response) HasSelfCustodyWalletChallenge() bo
 }
 
 // SetSelfCustodyWalletChallenge gets a reference to the given string and assigns it to the SelfCustodyWalletChallenge field.
+// Deprecated
 func (o *GetTransactionLimitation200Response) SetSelfCustodyWalletChallenge(v string) {
 	o.SelfCustodyWalletChallenge = &v
 }
@@ -172,6 +178,38 @@ func (o *GetTransactionLimitation200Response) SetConnectWalletList(v []string) {
 	o.ConnectWalletList = v
 }
 
+// GetSatoshiTestSupported returns the SatoshiTestSupported field value if set, zero value otherwise.
+func (o *GetTransactionLimitation200Response) GetSatoshiTestSupported() bool {
+	if o == nil || IsNil(o.SatoshiTestSupported) {
+		var ret bool
+		return ret
+	}
+	return *o.SatoshiTestSupported
+}
+
+// GetSatoshiTestSupportedOk returns a tuple with the SatoshiTestSupported field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetTransactionLimitation200Response) GetSatoshiTestSupportedOk() (*bool, bool) {
+	if o == nil || IsNil(o.SatoshiTestSupported) {
+		return nil, false
+	}
+	return o.SatoshiTestSupported, true
+}
+
+// HasSatoshiTestSupported returns a boolean if a field has been set.
+func (o *GetTransactionLimitation200Response) HasSatoshiTestSupported() bool {
+	if o != nil && !IsNil(o.SatoshiTestSupported) {
+		return true
+	}
+
+	return false
+}
+
+// SetSatoshiTestSupported gets a reference to the given bool and assigns it to the SatoshiTestSupported field.
+func (o *GetTransactionLimitation200Response) SetSatoshiTestSupported(v bool) {
+	o.SatoshiTestSupported = &v
+}
+
 func (o GetTransactionLimitation200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -193,6 +231,9 @@ func (o GetTransactionLimitation200Response) ToMap() (map[string]interface{}, er
 	}
 	if !IsNil(o.ConnectWalletList) {
 		toSerialize["connect_wallet_list"] = o.ConnectWalletList
+	}
+	if !IsNil(o.SatoshiTestSupported) {
+		toSerialize["satoshi_test_supported"] = o.SatoshiTestSupported
 	}
 	return toSerialize, nil
 }

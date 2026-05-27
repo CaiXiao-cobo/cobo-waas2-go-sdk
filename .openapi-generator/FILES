@@ -50,6 +50,12 @@ docs/AddressRiskLevel.md
 docs/AddressTransferDestination.md
 docs/AddressTransferDestinationAccountOutput.md
 docs/AddressTransferDestinationUtxoOutputsInner.md
+docs/AddressVerification.md
+docs/AddressVerificationDetail.md
+docs/AddressVerificationDetailSatoshiTestDetail.md
+docs/AddressVerificationDetailSignatureDetail.md
+docs/AddressVerificationMethod.md
+docs/AddressVerificationStatus.md
 docs/AddressesEventData.md
 docs/AddressesEventDataAllOfAddresses.md
 docs/AllocationItem.md
@@ -111,6 +117,7 @@ docs/BridgingFee.md
 docs/BroadcastSignedTransactions201ResponseInner.md
 docs/BroadcastSignedTransactionsRequest.md
 docs/CallbackMessage.md
+docs/CancelSatoshiTestChallengeRequest.md
 docs/ChainInfo.md
 docs/ChainsEventData.md
 docs/ChangeGuardPubkey200Response.md
@@ -181,6 +188,7 @@ docs/CreateRefundLinkRequest.md
 docs/CreateRefundRequest.md
 docs/CreateReportRequest.md
 docs/CreateSafeWalletParams.md
+docs/CreateSatoshiTestChallengeRequest.md
 docs/CreateSettlement.md
 docs/CreateSettlementRequestRequest.md
 docs/CreateSmartContractWalletParams.md
@@ -349,6 +357,7 @@ docs/Link.md
 docs/LinkDisplayInfo.md
 docs/ListAddressBalancesByToken200Response.md
 docs/ListAddressBooks200Response.md
+docs/ListAddressVerifications200Response.md
 docs/ListAddresses200Response.md
 docs/ListAllocationItems200Response.md
 docs/ListApprovalRequests200Response.md
@@ -361,6 +370,7 @@ docs/ListBabylonEligibleStakings200ResponseDataInner.md
 docs/ListBabylonStakingRegistrations200Response.md
 docs/ListBatchAllocations200Response.md
 docs/ListBulkSendItems200Response.md
+docs/ListBulkSends200Response.md
 docs/ListCallbackMessages200Response.md
 docs/ListCounterparties200Response.md
 docs/ListCounterpartyEntries200Response.md
@@ -526,6 +536,10 @@ docs/SafeWallet.md
 docs/SafeWalletDelegates.md
 docs/SafeWalletDelegatesContractCall.md
 docs/SafeWalletDelegatesTransfer.md
+docs/SatoshiTestCancelResult.md
+docs/SatoshiTestChallenge.md
+docs/SatoshiTestChallengeAction.md
+docs/SatoshiTestChallengeStatus.md
 docs/Scopes.md
 docs/SelectedEntityType.md
 docs/SelfCustodyWallet.md
@@ -535,6 +549,8 @@ docs/Settlement.md
 docs/SettlementDetail.md
 docs/SettlementInfo.md
 docs/SettlementType.md
+docs/SignatureChallenge.md
+docs/SignatureDetail.md
 docs/SkipCheckType.md
 docs/SmartContractInitiator.md
 docs/SmartContractWalletInfo.md
@@ -814,6 +830,7 @@ docs/TravelRuleDepositLegalEntity.md
 docs/TravelRuleDepositNaturalEntity.md
 docs/TravelRuleDepositRequest.md
 docs/TravelRuleDepositRequestTravelRuleInfo.md
+docs/TravelRuleTransactionType.md
 docs/TravelRuleWithdrawExchangesOrVASP.md
 docs/TravelRuleWithdrawExchangesOrVASPEntityInfo.md
 docs/TravelRuleWithdrawLegalEntity.md
@@ -888,6 +905,12 @@ model_address_risk_level.go
 model_address_transfer_destination.go
 model_address_transfer_destination_account_output.go
 model_address_transfer_destination_utxo_outputs_inner.go
+model_address_verification.go
+model_address_verification_detail.go
+model_address_verification_detail_satoshi_test_detail.go
+model_address_verification_detail_signature_detail.go
+model_address_verification_method.go
+model_address_verification_status.go
 model_addresses_event_data.go
 model_addresses_event_data_all_of_addresses.go
 model_allocation_item.go
@@ -947,6 +970,7 @@ model_broadcast_signed_transactions_request.go
 model_btcbip137_message_sign_destination.go
 model_btcbip322_message_sign_destination.go
 model_callback_message.go
+model_cancel_satoshi_test_challenge_request.go
 model_chain_info.go
 model_chains_event_data.go
 model_change_guard_pubkey_200_response.go
@@ -1016,6 +1040,7 @@ model_create_refund_link_request.go
 model_create_refund_request.go
 model_create_report_request.go
 model_create_safe_wallet_params.go
+model_create_satoshi_test_challenge_request.go
 model_create_settlement.go
 model_create_settlement_request_request.go
 model_create_smart_contract_wallet_params.go
@@ -1180,6 +1205,7 @@ model_link.go
 model_link_display_info.go
 model_list_address_balances_by_token_200_response.go
 model_list_address_books_200_response.go
+model_list_address_verifications200_response.go
 model_list_addresses_200_response.go
 model_list_allocation_items_200_response.go
 model_list_approval_requests_200_response.go
@@ -1192,6 +1218,7 @@ model_list_babylon_eligible_stakings_200_response_data_inner.go
 model_list_babylon_staking_registrations_200_response.go
 model_list_batch_allocations_200_response.go
 model_list_bulk_send_items_200_response.go
+model_list_bulk_sends_200_response.go
 model_list_callback_messages_200_response.go
 model_list_counterparties_200_response.go
 model_list_counterparty_entries_200_response.go
@@ -1351,6 +1378,10 @@ model_safe_wallet.go
 model_safe_wallet_delegates.go
 model_safe_wallet_delegates_contract_call.go
 model_safe_wallet_delegates_transfer.go
+model_satoshi_test_cancel_result.go
+model_satoshi_test_challenge.go
+model_satoshi_test_challenge_action.go
+model_satoshi_test_challenge_status.go
 model_scopes.go
 model_selected_entity_type.go
 model_self_custody_wallet.go
@@ -1360,6 +1391,8 @@ model_settlement.go
 model_settlement_detail.go
 model_settlement_info.go
 model_settlement_type.go
+model_signature_challenge.go
+model_signature_detail.go
 model_skip_check_type.go
 model_smart_contract_initiator.go
 model_smart_contract_wallet_info.go
@@ -1596,6 +1629,7 @@ model_travel_rule_deposit_legal_entity.go
 model_travel_rule_deposit_natural_entity.go
 model_travel_rule_deposit_request.go
 model_travel_rule_deposit_request_travel_rule_info.go
+model_travel_rule_transaction_type.go
 model_travel_rule_withdraw_exchanges_or_vasp.go
 model_travel_rule_withdraw_exchanges_or_vasp_entity_info.go
 model_travel_rule_withdraw_legal_entity.go

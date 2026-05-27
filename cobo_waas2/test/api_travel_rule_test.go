@@ -28,11 +28,85 @@ func Test_cobo_waas2_TravelRuleAPIService(t *testing.T) {
 		Secret: "<YOUR_API_PRIV_KEY_IN_HEX>",
 	})
 
+	t.Run("Test TravelRuleAPIService CancelSatoshiTestChallenge", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.TravelRuleAPI.CancelSatoshiTestChallenge(ctx).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TravelRuleAPIService CreateSatoshiTestChallenge", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.TravelRuleAPI.CreateSatoshiTestChallenge(ctx).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TravelRuleAPIService GetAddressVerification", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var verificationId string
+
+		resp, httpRes, err := apiClient.TravelRuleAPI.GetAddressVerification(ctx, verificationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TravelRuleAPIService GetSatoshiTestChallenge", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.TravelRuleAPI.GetSatoshiTestChallenge(ctx).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TravelRuleAPIService GetSignatureChallenge", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.TravelRuleAPI.GetSignatureChallenge(ctx).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test TravelRuleAPIService GetTransactionLimitation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.TravelRuleAPI.GetTransactionLimitation(ctx).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TravelRuleAPIService ListAddressVerifications", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.TravelRuleAPI.ListAddressVerifications(ctx).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

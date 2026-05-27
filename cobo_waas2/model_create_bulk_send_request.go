@@ -19,6 +19,8 @@ var _ MappedNullable = &CreateBulkSendRequest{}
 
 // CreateBulkSendRequest struct for CreateBulkSendRequest
 type CreateBulkSendRequest struct {
+	// The request ID that is used to track a bulk send request. The request ID is provided by you and must be unique within your system.
+	RequestId *string `json:"request_id,omitempty"`
 	// The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
 	SourceAccount string `json:"source_account"`
 	ExecutionMode PaymentBulkSendExecutionMode `json:"execution_mode"`
@@ -48,6 +50,38 @@ func NewCreateBulkSendRequest(sourceAccount string, executionMode PaymentBulkSen
 func NewCreateBulkSendRequestWithDefaults() *CreateBulkSendRequest {
 	this := CreateBulkSendRequest{}
 	return &this
+}
+
+// GetRequestId returns the RequestId field value if set, zero value otherwise.
+func (o *CreateBulkSendRequest) GetRequestId() string {
+	if o == nil || IsNil(o.RequestId) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBulkSendRequest) GetRequestIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RequestId) {
+		return nil, false
+	}
+	return o.RequestId, true
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *CreateBulkSendRequest) HasRequestId() bool {
+	if o != nil && !IsNil(o.RequestId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given string and assigns it to the RequestId field.
+func (o *CreateBulkSendRequest) SetRequestId(v string) {
+	o.RequestId = &v
 }
 
 // GetSourceAccount returns the SourceAccount field value
@@ -164,6 +198,9 @@ func (o CreateBulkSendRequest) MarshalJSON() ([]byte, error) {
 
 func (o CreateBulkSendRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RequestId) {
+		toSerialize["request_id"] = o.RequestId
+	}
 	toSerialize["source_account"] = o.SourceAccount
 	toSerialize["execution_mode"] = o.ExecutionMode
 	if !IsNil(o.Description) {

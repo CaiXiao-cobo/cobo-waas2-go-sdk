@@ -32,6 +32,8 @@ type ApprovalUserDetail struct {
 	ApprovalResultCode *int32 `json:"approval_result_code,omitempty"`
 	// Timestamp when the approval was created.
 	CreatedTime *int32 `json:"created_time,omitempty"`
+	// The timestamp when the approval was expired.
+	ExpiredTime *int32 `json:"expired_time,omitempty"`
 	// Version of the template used for the transaction approval.
 	TemplateVersion *string `json:"template_version,omitempty"`
 	// Display title used in the transaction approval.
@@ -323,6 +325,38 @@ func (o *ApprovalUserDetail) SetCreatedTime(v int32) {
 	o.CreatedTime = &v
 }
 
+// GetExpiredTime returns the ExpiredTime field value if set, zero value otherwise.
+func (o *ApprovalUserDetail) GetExpiredTime() int32 {
+	if o == nil || IsNil(o.ExpiredTime) {
+		var ret int32
+		return ret
+	}
+	return *o.ExpiredTime
+}
+
+// GetExpiredTimeOk returns a tuple with the ExpiredTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalUserDetail) GetExpiredTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.ExpiredTime) {
+		return nil, false
+	}
+	return o.ExpiredTime, true
+}
+
+// HasExpiredTime returns a boolean if a field has been set.
+func (o *ApprovalUserDetail) HasExpiredTime() bool {
+	if o != nil && !IsNil(o.ExpiredTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiredTime gets a reference to the given int32 and assigns it to the ExpiredTime field.
+func (o *ApprovalUserDetail) SetExpiredTime(v int32) {
+	o.ExpiredTime = &v
+}
+
 // GetTemplateVersion returns the TemplateVersion field value if set, zero value otherwise.
 func (o *ApprovalUserDetail) GetTemplateVersion() string {
 	if o == nil || IsNil(o.TemplateVersion) {
@@ -612,6 +646,9 @@ func (o ApprovalUserDetail) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime
+	}
+	if !IsNil(o.ExpiredTime) {
+		toSerialize["expired_time"] = o.ExpiredTime
 	}
 	if !IsNil(o.TemplateVersion) {
 		toSerialize["template_version"] = o.TemplateVersion

@@ -23,6 +23,8 @@ type PaymentBulkSendEvent struct {
 	DataType string `json:"data_type"`
 	// The bulk send ID.
 	BulkSendId string `json:"bulk_send_id"`
+	// The request ID.
+	RequestId *string `json:"request_id,omitempty"`
 	// The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
 	SourceAccount string `json:"source_account"`
 	// The description for the entire bulk send batch.
@@ -107,6 +109,38 @@ func (o *PaymentBulkSendEvent) GetBulkSendIdOk() (*string, bool) {
 // SetBulkSendId sets field value
 func (o *PaymentBulkSendEvent) SetBulkSendId(v string) {
 	o.BulkSendId = v
+}
+
+// GetRequestId returns the RequestId field value if set, zero value otherwise.
+func (o *PaymentBulkSendEvent) GetRequestId() string {
+	if o == nil || IsNil(o.RequestId) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentBulkSendEvent) GetRequestIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RequestId) {
+		return nil, false
+	}
+	return o.RequestId, true
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *PaymentBulkSendEvent) HasRequestId() bool {
+	if o != nil && !IsNil(o.RequestId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given string and assigns it to the RequestId field.
+func (o *PaymentBulkSendEvent) SetRequestId(v string) {
+	o.RequestId = &v
 }
 
 // GetSourceAccount returns the SourceAccount field value
@@ -273,6 +307,9 @@ func (o PaymentBulkSendEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data_type"] = o.DataType
 	toSerialize["bulk_send_id"] = o.BulkSendId
+	if !IsNil(o.RequestId) {
+		toSerialize["request_id"] = o.RequestId
+	}
 	toSerialize["source_account"] = o.SourceAccount
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

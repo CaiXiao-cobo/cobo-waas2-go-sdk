@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**RequestId** | Pointer to **string** | The request ID that is used to track a bulk send request. The request ID is provided by you and must be unique within your system. | [optional] 
 **SourceAccount** | **string** | The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the source account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;.  | 
 **ExecutionMode** | [**PaymentBulkSendExecutionMode**](PaymentBulkSendExecutionMode.md) |  | 
 **Description** | Pointer to **string** | The description for the entire bulk send batch. | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewCreateBulkSendRequestWithDefaults instantiates a new CreateBulkSendRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetRequestId
+
+`func (o *CreateBulkSendRequest) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *CreateBulkSendRequest) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *CreateBulkSendRequest) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+### HasRequestId
+
+`func (o *CreateBulkSendRequest) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
 
 ### GetSourceAccount
 
